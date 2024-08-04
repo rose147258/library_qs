@@ -1,0 +1,31 @@
+server:
+  port: 8088
+location: "D:/upLoad/picture"
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.23.129:3306/library_system?useSSL=false&useUnicode=true&characterEncoding=utf8
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      min-idle: 5
+      max-active: 20
+      max-wait: 5000
+  thymeleaf:
+    prefix: classpath:/templates/library/
+    suffix: .html
+  web:
+    resources:
+      static-locations: classpath:/static/,classpath:/static/assets/,classpath:/public/,classpath:/resources/,classpath:/META-INF/resource/,file:${location}
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
